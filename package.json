@@ -1,0 +1,48 @@
+{
+  "name": "leego-design-ppt",
+  "version": "2.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern public/demo --ignore-pattern skill",
+    "deck:validate": "node skill/leego-design-ppt/scripts/validate-deck-spec.mjs --input examples/demo/deck-spec.json",
+    "deck:web": "node skill/leego-design-ppt/scripts/build-web.mjs --input examples/demo/deck-spec.json --output public/demo",
+    "deck:pptx": "node skill/leego-design-ppt/scripts/build-pptx.mjs --input examples/demo/deck-spec.json --output output/pptx/leego-design-ppt-demo.pptx --renders output/pptx/renders",
+    "deck:pdf": "python3 skill/leego-design-ppt/scripts/build-pdf.py --renders output/pptx/renders --output output/pdf/leego-design-ppt-demo.pdf",
+    "deck:qa": "node skill/leego-design-ppt/scripts/quality-check.mjs --input examples/demo/deck-spec.json --output output",
+    "deck:all": "npm run deck:validate && npm run deck:web && npm run deck:pptx && npm run deck:pdf && npm run deck:qa",
+    "release:build": "node scripts/build-release.mjs",
+    "release:publish": "node scripts/publish-release.mjs",
+    "skill:install": "node scripts/install-local.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/workers-types": "4.20260515.1",
+    "@openai/sites-vite-plugin": "^0.1.0 || ^0.2.0",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "1.0.0-beta.3",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0"
+  },
+  "type": "module"
+}

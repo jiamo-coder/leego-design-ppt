@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "2.0",
+  "title": "让成长证据进入每一次教学决策",
+  "language": "zh-CN",
+  "audience": "教育机构管理团队",
+  "purpose": "项目决策汇报",
+  "centralTakeaway": "平台的价值不在增加一个工具，而在形成可追踪、可解释、可行动的成长闭环。",
+  "brand": { "name": "示例项目", "englishName": "DEMO PROJECT" },
+  "theme": "purple-tech",
+  "bannedTerms": ["SOURCE_BRAND", "OLD_BRAND_EN", "CLIENT_NAME"],
+  "replacements": [],
+  "slides": [
+    {
+      "id": "cover",
+      "narrativeJob": "建立项目的决策命题",
+      "layout": "cover",
+      "eyebrow": "ANONYMIZED LEADERSHIP BRIEF / 2026",
+      "title": "让成长证据进入每一次教学决策",
+      "body": "一套面向管理者、教师与学生的 AI 成长平台叙事示例。",
+      "notes": { "purpose": "先讲管理问题，不从功能清单开始。", "talkingPoints": ["这是一份完全脱敏的演示。", "所有数字均为示例口径。"], "transition": "先看为什么现有链路难以形成行动。" }
+    },
+    {
+      "id": "executive-summary",
+      "narrativeJob": "给出三项核心判断",
+      "layout": "executive-summary",
+      "eyebrow": "EXECUTIVE VIEW",
+      "title": "真正缺少的不是数据，而是共同的判断语言",
+      "body": "不同角色拥有碎片信息，却缺少统一证据、清晰责任和连续反馈。",
+      "items": [
+        { "value": "01", "title": "证据统一", "body": "把过程、作品与反馈放进同一成长语境。" },
+        { "value": "02", "title": "行动可见", "body": "每次判断都对应下一步建议和责任人。" },
+        { "value": "03", "title": "边界清楚", "body": "AI 提供辅助，不替代教师专业判断。" }
+      ],
+      "notes": { "purpose": "用三句话建立全局框架。", "talkingPoints": ["统一语言比新增报表更重要。", "行动和治理必须与能力同时设计。"], "transition": "这些问题在当前链路中如何出现？" }
+    },
+    {
+      "id": "problem-matrix",
+      "narrativeJob": "展示三类角色的共同断点",
+      "layout": "problem-matrix",
+      "eyebrow": "CURRENT FRICTION",
+      "title": "每个角色都很努力，证据却没有连成闭环",
+      "items": [
+        { "title": "管理者", "body": "看见结果，难以定位过程中的关键变量。" },
+        { "title": "教师", "body": "记录分散，复盘成本高，建议难以持续跟进。" },
+        { "title": "学生", "body": "收到评价，却不总能理解下一步怎样改进。" },
+        { "title": "家长", "body": "信息频繁，但缺少连续、可解释的成长线索。" }
+      ],
+      "notes": { "purpose": "把问题从个人效率上升为系统连接问题。", "transition": "因此，平台需要重构证据流，而不是堆叠入口。" }
+    },
+    {
+      "id": "principles",
+      "narrativeJob": "确定产品原则",
+      "layout": "principles",
+      "eyebrow": "DESIGN PRINCIPLES",
+      "title": "四条原则约束产品，也约束 AI 的角色",
+      "items": [
+        { "value": "A", "title": "证据先于结论", "body": "每条判断可回到原始材料与形成过程。" },
+        { "value": "B", "title": "建议必须可行动", "body": "建议包含对象、时点、责任与复核方式。" },
+        { "value": "C", "title": "人保留最终判断", "body": "高影响决定由授权角色确认。" },
+        { "value": "D", "title": "最少必要数据", "body": "只收集完成任务所需的信息。" }
+      ],
+      "notes": { "purpose": "给后续架构建立评判标准。", "transition": "原则将落到一套分层架构。" }
+    },
+    {
+      "id": "architecture",
+      "narrativeJob": "解释平台分层",
+      "layout": "architecture",
+      "eyebrow": "PLATFORM ARCHITECTURE",
+      "title": "四层能力把原始活动转成可执行的成长建议",
+      "items": [
+        { "value": "01", "title": "触点层", "body": "任务、作品、观察、对话与反馈。" },
+        { "value": "02", "title": "证据层", "body": "结构化、去重、关联与可信度标记。" },
+        { "value": "03", "title": "智能层", "body": "总结、对照、提示与风险识别。" },
+        { "value": "04", "title": "行动层", "body": "建议、确认、执行、复核与复盘。" }
+      ],
+      "notes": { "purpose": "解释产品边界和系统责任。", "transition": "分层能力通过同一条数据流协同。" }
+    },
+    {
+      "id": "data-flow",
+      "narrativeJob": "展示证据流转",
+      "layout": "data-flow",
+      "eyebrow": "EVIDENCE FLOW",
+      "title": "每条建议都能回到来源、过程与确认人",
+      "body": "采集、整理、分析、建议、确认、执行、复核构成完整链路。",
+      "items": [
+        { "title": "输入", "body": "学习活动与授权资料。" },
+        { "title": "处理", "body": "结构化证据与形成解释。" },
+        { "title": "输出", "body": "分角色呈现下一步行动。" },
+        { "title": "控制", "body": "权限、留痕、复核与撤回。" }
+      ],
+      "notes": { "purpose": "强调可解释和可追溯。", "transition": "有了数据流，还需要明确人的责任。" }
+    },
+    {
+      "id": "governance",
+      "narrativeJob": "明确治理边界",
+      "layout": "governance",
+      "eyebrow": "HUMAN GOVERNANCE",
+      "title": "AI 负责发现线索，人负责解释与决定",
+      "items": [
+        { "title": "AI 可以做", "body": "整理、归纳、对照、提示异常与生成草案。" },
+        { "title": "必须人工确认", "body": "评价结论、资源调整、权益影响与对外沟通。" },
+        { "title": "系统必须记录", "body": "来源、版本、修改、确认、撤回与访问。" }
+      ],
+      "notes": { "purpose": "避免把 AI 能力描述成无边界自动化。", "transition": "治理边界将进入日常流程。" }
+    },
+    {
+      "id": "process",
+      "narrativeJob": "展示日常闭环",
+      "layout": "process",
+      "eyebrow": "WEEKLY LOOP",
+      "title": "一个教学周完成一次轻量的证据闭环",
+      "items": [
+        { "value": "MON", "title": "设定目标", "body": "确认本周观察重点和任务证据。" },
+        { "value": "WED", "title": "形成线索", "body": "聚合过程材料，生成待确认提示。" },
+        { "value": "FRI", "title": "讨论行动", "body": "教师确认建议并分配跟进行动。" },
+        { "value": "NEXT", "title": "复核变化", "body": "下一周期验证行动是否产生改善。" }
+      ],
+      "notes": { "purpose": "把抽象架构放进真实节奏。", "transition": "落地应从小范围、可验证场景开始。" }
+    },
+    {
+      "id": "roadmap",
+      "narrativeJob": "提出分阶段路线",
+      "layout": "roadmap",
+      "eyebrow": "DELIVERY ROADMAP",
+      "title": "先验证闭环，再扩展能力和覆盖范围",
+      "items": [
+        { "value": "P1", "title": "单场景验证", "body": "选一个高频任务，验证证据和行动链。" },
+        { "value": "P2", "title": "跨角色协同", "body": "连通管理者、教师与学生视图。" },
+        { "value": "P3", "title": "治理与规模化", "body": "固化权限、指标、培训与审计机制。" }
+      ],
+      "notes": { "purpose": "把项目拆成可以停止或继续的决策阶段。", "transition": "每一阶段都需要明确的验收指标。" }
+    },
+    {
+      "id": "kpi",
+      "narrativeJob": "定义示例验收口径",
+      "layout": "kpi",
+      "eyebrow": "MEASUREMENT FRAME",
+      "title": "成功不以使用次数衡量，而看闭环质量",
+      "body": "以下仅为示例指标定义，不代表真实项目数据。",
+      "items": [
+        { "value": "≥80%", "title": "证据可追溯率", "body": "建议能定位到原始材料的比例。" },
+        { "value": "≤2d", "title": "行动确认时长", "body": "从提示产生到责任人确认的时间。" },
+        { "value": "100%", "title": "高影响人工确认", "body": "涉及权益的结论全部由授权人员确认。" }
+      ],
+      "notes": { "purpose": "示范指标写法与边界。", "talkingPoints": ["数字是示例，不应用作真实承诺。"], "transition": "最后回到本次需要批准的决定。" }
+    },
+    {
+      "id": "decision-close",
+      "narrativeJob": "收束为明确决策",
+      "layout": "decision-close",
+      "eyebrow": "DECISION REQUIRED",
+      "title": "批准一个边界清楚、可验证的闭环试点",
+      "body": "先选定单一场景、责任团队和验收口径，再决定是否扩大投入。",
+      "items": [
+        { "value": "01", "title": "确定场景", "body": "选择高频、证据可得、影响可控的任务。" },
+        { "value": "02", "title": "确定责任", "body": "明确业务、产品、技术与合规负责人。" },
+        { "value": "03", "title": "确定复盘", "body": "约定继续、调整或停止的判断标准。" }
+      ],
+      "notes": { "purpose": "以可批准的动作结束，而非泛化愿景。", "transition": "进入讨论与确认。" }
+    }
+  ]
+}

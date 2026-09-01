@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "layouts": [
+    { "id": "cover", "job": "Open with purpose, stakes, or a precise point of view." },
+    { "id": "executive-summary", "job": "State 3-4 conclusions and the decision required." },
+    { "id": "timeline", "job": "Show change across time with milestones and implications." },
+    { "id": "problem-matrix", "job": "Compare recurring problems across actors or stages." },
+    { "id": "principles", "job": "Present a small set of non-overlapping rules." },
+    { "id": "split-visual", "job": "Pair one dominant image with one claim and support." },
+    { "id": "architecture", "job": "Explain layers, ownership, and system boundaries." },
+    { "id": "data-flow", "job": "Show sources, transformation, outputs, and controls." },
+    { "id": "process", "job": "Explain a sequence with stage owners and gates." },
+    { "id": "dual-screenshot", "job": "Compare two complete screens without cropping text." },
+    { "id": "product-matrix", "job": "Organize products by role, need, or lifecycle." },
+    { "id": "vi-showcase", "job": "Present a complete VI sheet or application set with contain fit." },
+    { "id": "comparison", "job": "Make the consequence of two options explicit." },
+    { "id": "governance", "job": "Clarify rights, responsibilities, decisions, and escalation." },
+    { "id": "evidence-wall", "job": "Show multiple evidence thumbnails with source labels." },
+    { "id": "roadmap", "job": "Connect phases, capabilities, gates, and outcomes." },
+    { "id": "kpi", "job": "Show a small metric set with definition and action threshold." },
+    { "id": "decision-close", "job": "Resolve the opening and specify the next decision or action." }
+  ]
+}

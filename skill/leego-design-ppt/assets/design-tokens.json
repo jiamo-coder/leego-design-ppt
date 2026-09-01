@@ -1,0 +1,30 @@
+{
+  "name": "Leego Design PPT Purple Tech",
+  "version": "2.0.0",
+  "colors": {
+    "ink": "#10132E",
+    "navy": "#15194A",
+    "purple": "#6546FF",
+    "purpleDark": "#4930D8",
+    "ice": "#CFE6FF",
+    "mist": "#EEF2FF",
+    "paper": "#F7F8FC",
+    "white": "#FFFFFF",
+    "muted": "#69708A",
+    "line": "#DCE1EF",
+    "success": "#1D8A67",
+    "warning": "#B66A16"
+  },
+  "type": {
+    "sans": "Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif",
+    "mono": "SFMono-Regular, Consolas, monospace",
+    "deckTitle": 72,
+    "slideTitle": 44,
+    "sectionTitle": 56,
+    "subhead": 26,
+    "body": 20,
+    "label": 12
+  },
+  "space": { "unit": 8, "slideX": 72, "slideY": 60, "gutter": 28 },
+  "shape": { "radius": 0, "lineWidth": 1, "shadow": "none" }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "themes": [
+    {
+      "id": "purple-tech",
+      "name": "Purple Tech",
+      "description": "Flat purple, navy, ice blue and cool white for rigorous technology and executive storytelling.",
+      "tokens": "design-tokens.json"
+    },
+    {
+      "id": "ink-editorial",
+      "name": "Ink Editorial",
+      "description": "Warm-white, near-black and one supplied brand accent for brand books and product narratives.",
+      "overrides": { "ink": "#141414", "paper": "#FAF9F5", "muted": "#6A6863" }
+    }
+  ]
+}

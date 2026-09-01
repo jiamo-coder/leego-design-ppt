@@ -1,0 +1,8 @@
+interface:
+  display_name: "Leego Design PPT"
+  short_description: "Responsive web, editable PPTX, and matched PDF decks"
+  brand_color: "#6546FF"
+  default_prompt: "Use Leego Design PPT to understand my audience and decision goal, optimize the narrative, and produce a responsive web presentation, editable PPTX, and matching PDF from one deck-spec.json."
+
+policy:
+  allow_implicit_invocation: true
