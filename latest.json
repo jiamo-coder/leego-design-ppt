@@ -1,0 +1,66 @@
+{
+  "name": "Leego Design PPT",
+  "id": "leego-design-ppt",
+  "version": "2.0.0",
+  "updatedAt": "2026-09-01",
+  "generatedAt": "2026-09-01T00:39:28.256Z",
+  "channel": "stable",
+  "trustedOrigin": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/",
+  "compatibility": {
+    "codex": ">=1.0",
+    "deckSpec": "2.0"
+  },
+  "downloadUrl": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.0.0.zip",
+  "resources": [
+    {
+      "id": "skill-zip",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.0.0.zip",
+      "sha256": "ab4764989d85fff1d0b27b83bb7ff75999eee11e7736fc605aa7782a7289c873"
+    },
+    {
+      "id": "skill",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/SKILL.md",
+      "sha256": "1de31dcdcac337fb0c93c2f9a8ba8cfb78352bc3921981f867cd9469e859409d"
+    },
+    {
+      "id": "interaction-lessons",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/references/interaction-lessons.md",
+      "sha256": "8336e68090a18c35871010c2db3b8d1ee6b689db36e00ae60bd1bc0c4f6de320"
+    },
+    {
+      "id": "design-tokens",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/assets/design-tokens.json",
+      "sha256": "09c554b271bf1bbdbc6e9494cfe22445a5845116393fde9a556e10b2d9ccded2"
+    },
+    {
+      "id": "theme-presets",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/assets/theme-presets.json",
+      "sha256": "2d7a78460e609ab63248dde81a61612c6ea303c7ebcf140c5f67c1afc3f251d3"
+    },
+    {
+      "id": "layout-patterns",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/assets/layout-patterns.json",
+      "sha256": "5bc2a67ff11b08e21414e5e7788d52cb6264f0a4f3c9f0a560a765f2a11fc9a1"
+    },
+    {
+      "id": "deck-spec-schema",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/assets/deck-spec.schema.json",
+      "sha256": "1532a7d2b65403ede267381f8361611e8505a3293db0dff0bdd99f3ca4d5b7d0"
+    },
+    {
+      "id": "demo-pptx",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-demo.pptx",
+      "sha256": "e42654edc0891489a9e2ebf3c52003ef2c1db9ed9b93b7778ca00423e9346ee6"
+    },
+    {
+      "id": "demo-pdf",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-demo.pdf",
+      "sha256": "bca8004b14d232a4a1aab4ea46af61e366eec1dd9b897b74c43b6c9b190b9753"
+    }
+  ],
+  "summary": [
+    "Introduces one deck-spec source for responsive HTML, editable PPTX, and matched PDF.",
+    "Adds 18 narrative layout patterns and the Purple Tech design system.",
+    "Adds brand-residue, typography, image-fit, source, and file QA rules."
+  ]
+}
