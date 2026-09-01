@@ -17,7 +17,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", Arial, sans-serif;
 }
 a { color: inherit; text-decoration: none; }
 
@@ -44,6 +44,21 @@ a { color: inherit; text-decoration: none; }
 .nav-links { display: flex; font-size: 13px; gap: 30px; color: var(--muted); }
 .nav-links a:hover, .text-action:hover { color: var(--purple); }
 .nav-action { border-bottom: 1px solid var(--ink); font-size: 13px; justify-self: end; padding: 8px 0; }
+.nav-utilities { align-items: center; display: flex; gap: 20px; justify-self: end; }
+.language-switch { border: 1px solid var(--line); display: inline-grid; grid-template-columns: 1fr 1fr; padding: 3px; }
+.language-switch button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+  min-height: 44px;
+  min-width: 50px;
+  padding: 0 12px;
+}
+.language-switch button[aria-pressed="true"] { background: var(--ink); color: white; }
+.language-switch button:hover:not([aria-pressed="true"]) { color: var(--purple); }
+.language-switch button:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 
 .hero {
   display: grid;
@@ -59,6 +74,8 @@ a { color: inherit; text-decoration: none; }
 .signal { background: var(--purple); height: 8px; width: 8px; }
 .hero h1 { font-size: clamp(54px, 6.4vw, 92px); letter-spacing: -0.065em; line-height: 0.94; margin: 34px 0 30px; max-width: 680px; }
 .hero h1 span { color: var(--purple); }
+.title-line { display: block; }
+.hero h1 .title-line:first-child { color: var(--ink); }
 .hero-lead { color: var(--muted); font-size: clamp(17px, 1.35vw, 20px); line-height: 1.65; margin: 0; max-width: 590px; }
 .hero-actions { align-items: center; display: flex; gap: 28px; margin-top: 38px; }
 .primary-action { background: var(--ink); color: white; font-size: 13px; font-weight: 700; padding: 16px 21px; }
@@ -188,6 +205,8 @@ footer p { color: var(--muted); font: 650 10px/1 ui-monospace, SFMono-Regular, m
   .site-nav { height: 68px; padding: 0 18px; }
   .brand { font-size: 14px; }
   .nav-action { display: none; }
+  .nav-utilities { gap: 0; }
+  .language-switch button { min-width: 46px; padding: 0 9px; }
   .hero { gap: 38px; padding: 40px 18px 54px; }
   .hero h1 { font-size: clamp(48px, 15vw, 68px); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; }

@@ -14,7 +14,11 @@ const FALLBACK: Manifest = {
   summary: ["Bundled release snapshot"],
 };
 
-export default function VersionStatus() {
+export default function VersionStatus({
+  labels,
+}: {
+  labels: { live: string; snapshot: string; updated: string };
+}) {
   const [manifest, setManifest] = useState(FALLBACK);
   const [mode, setMode] = useState<"live" | "snapshot">("snapshot");
 
@@ -49,9 +53,9 @@ export default function VersionStatus() {
     <div className="version-card" aria-live="polite">
       <span className={`version-dot ${mode}`} aria-hidden="true" />
       <div>
-        <p>{mode === "live" ? "LIVE RELEASE CHANNEL" : "BUNDLED RELEASE SNAPSHOT"}</p>
+        <p>{mode === "live" ? labels.live : labels.snapshot}</p>
         <strong>Leego Design PPT {manifest.version}</strong>
-        <span>Updated {manifest.updatedAt}</span>
+        <span>{labels.updated} {manifest.updatedAt}</span>
       </div>
     </div>
   );

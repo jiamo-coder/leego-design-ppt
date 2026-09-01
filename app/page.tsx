@@ -1,80 +1,99 @@
+"use client";
+
+import { useEffect, useSyncExternalStore } from "react";
 import VersionStatus from "./VersionStatus";
+import { siteCopy, type Locale } from "./siteCopy";
 
-const outputs = [
-  { no: "01", title: "Responsive HTML", body: "16:9 presentation mode plus reading layouts for five viewport widths." },
-  { no: "02", title: "Editable PPTX", body: "Text, images, charts, tables, and basic geometry stay editable." },
-  { no: "03", title: "Pixel-stable PDF", body: "Built from final high-resolution slide renders to prevent layout drift." },
-];
+const LANGUAGE_KEY = "leego-design-ppt-language";
+const LANGUAGE_EVENT = "leego-design-ppt-language-change";
 
-const layouts = [
-  "Cover", "Executive summary", "Timeline", "Problem matrix", "Principles", "Split visual",
-  "Architecture", "Data flow", "Process", "Dual screenshot", "Product matrix", "VI showcase",
-  "Comparison", "Governance", "Evidence wall", "Roadmap", "KPI", "Decision close",
-];
+function subscribeToLanguage(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(LANGUAGE_EVENT, callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(LANGUAGE_EVENT, callback);
+  };
+}
 
-const cases = [
-  { kind: "Brand book", before: "Asset collection", after: "Brand-led narrative", note: "VI, product, space, packaging, and scenarios gain distinct visual roles." },
-  { kind: "Product introduction", before: "Feature inventory", after: "Decision story", note: "Capabilities connect to evidence, governance, owners, and next actions." },
-  { kind: "Leadership report", before: "Dense source deck", after: "Executive brief", note: "Claims are shortened, ordered, and closed with a clear decision." },
-];
+function getLanguageSnapshot(): Locale {
+  return window.localStorage.getItem(LANGUAGE_KEY) === "en" ? "en" : "zh";
+}
 
-const qa = [
-  ["Narrative", "One job and one primary claim per slide"],
-  ["Typography", "No orphan characters or accidental title wraps"],
-  ["Imagery", "No meaningless crop or low-resolution enlargement"],
-  ["Brand", "No old logo, name, metadata, or note residue"],
-  ["Files", "Matched page count, order, sources, and openability"],
-  ["Responsive", "1440 / 1024 / 768 / 390 / 320 px + 200% zoom"],
-];
+function getServerLanguageSnapshot(): Locale {
+  return "zh";
+}
+
+function Lines({ children }: { children: string }) {
+  return <>{children.split("\n").map((line, index) => <span className="title-line" key={`${line}-${index}`}>{line}</span>)}</>;
+}
 
 export default function Home() {
+  const locale = useSyncExternalStore(subscribeToLanguage, getLanguageSnapshot, getServerLanguageSnapshot);
+  const copy = siteCopy[locale];
+
+  useEffect(() => {
+    document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
+  }, [locale]);
+
+  const changeLanguage = (next: Locale) => {
+    window.localStorage.setItem(LANGUAGE_KEY, next);
+    window.dispatchEvent(new Event(LANGUAGE_EVENT));
+  };
+
   return (
     <main>
-      <nav className="site-nav" aria-label="Primary navigation">
-        <a className="brand" href="#top" aria-label="Leego Design PPT home">
+      <nav className="site-nav" aria-label={copy.a11y.primaryNavigation}>
+        <a className="brand" href="#top" aria-label={copy.a11y.home}>
           <span className="brand-mark">L</span><span>Leego Design PPT</span>
         </a>
         <div className="nav-links">
-          <a href="#capabilities">Capabilities</a><a href="#layouts">Layouts</a><a href="#quality">Quality</a>
+          <a href="#capabilities">{copy.nav.capabilities}</a><a href="#layouts">{copy.nav.layouts}</a><a href="#quality">{copy.nav.quality}</a>
         </div>
-        <a className="nav-action" href="#download">Get 2.0.0</a>
+        <div className="nav-utilities">
+          <div className="language-switch" role="group" aria-label={copy.a11y.language}>
+            <button type="button" aria-pressed={locale === "zh"} onClick={() => changeLanguage("zh")}>中文</button>
+            <button type="button" aria-pressed={locale === "en"} onClick={() => changeLanguage("en")}>EN</button>
+          </div>
+          <a className="nav-action" href="#download">{copy.nav.download}</a>
+        </div>
       </nav>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <div className="version-line"><span className="signal" aria-hidden="true" />Version 2.0.0 · Presentation system</div>
-          <h1>One story.<br /><span>Three precise outputs.</span></h1>
-          <p className="hero-lead">A disciplined presentation skill that turns evidence, brand assets, and project context into responsive web decks, editable slides, and reliable PDFs.</p>
-          <div className="hero-actions"><a className="primary-action" href="/demo/index.html">Explore the live deck</a><a className="text-action" href="#method">Read the method →</a></div>
-          <ul className="output-list" aria-label="Supported outputs">
-            {outputs.map((output) => <li key={output.title}><span>{output.no}</span>{output.title}</li>)}
+          <div className="version-line"><span className="signal" aria-hidden="true" />{copy.hero.version}</div>
+          <h1><span className="title-line">{copy.hero.lineOne}</span><span className="title-line accent">{copy.hero.lineTwo}</span></h1>
+          <p className="hero-lead">{copy.hero.lead}</p>
+          <div className="hero-actions"><a className="primary-action" href="/demo/index.html">{copy.hero.explore}</a><a className="text-action" href="#method">{copy.hero.method}</a></div>
+          <ul className="output-list" aria-label={copy.a11y.supportedOutputs}>
+            {copy.outputs.map((output) => <li key={output.title}><span>{output.no}</span>{output.title}</li>)}
           </ul>
         </div>
-        <a className="deck-stage" href="/demo/index.html" aria-label="Open the interactive deck preview">
-          <div className="stage-toolbar"><span>LIVE DECK / 01</span><span>16:9 · RESPONSIVE</span></div>
+        <a className="deck-stage" href="/demo/index.html" aria-label={copy.a11y.openDemo}>
+          <div className="stage-toolbar"><span>{copy.stage.live}</span><span>{copy.stage.responsive}</span></div>
           <div className="slide-canvas">
             <div className="slide-index">LEEGO / 2.0.0</div>
-            <div className="slide-copy"><p>DECISION NARRATIVE</p><h2>Clarity is a system,<br />not a finishing touch.</h2></div>
-            <div className="slide-axis" aria-hidden="true"><span>CONTEXT</span><i /><span>EVIDENCE</span><i /><span>DECISION</span></div>
+            <div className="slide-copy"><p>{copy.stage.eyebrow}</p><h2><Lines>{copy.stage.title}</Lines></h2></div>
+            <div className="slide-axis" aria-hidden="true"><span>{copy.stage.context}</span><i /><span>{copy.stage.evidence}</span><i /><span>{copy.stage.decision}</span></div>
           </div>
-          <div className="stage-footer"><span>OPEN INTERACTIVE DEMO ↗</span><span>Notes · Overview · Touch</span></div>
+          <div className="stage-footer"><span>{copy.stage.open}</span><span>{copy.stage.controls}</span></div>
         </a>
       </section>
 
-      <section className="proof-strip" aria-label="Core principles">
-        <p>Strategy before slides.</p><p>Contain before crop.</p><p>Evidence before ornament.</p><p>QA before delivery.</p>
+      <section className="proof-strip" aria-label={copy.a11y.principles}>
+        {copy.principles.map((principle) => <p key={principle}>{principle}</p>)}
       </section>
 
       <section className="section intro-section" id="capabilities">
-        <div className="section-label">01 / ONE SEMANTIC SOURCE</div>
+        <div className="section-label">{copy.capabilities.label}</div>
         <div>
-          <h2>Author once in <code>deck-spec.json</code>.<br />Deliver without narrative drift.</h2>
-          <p className="section-lead">Audience, purpose, evidence, theme, image fit, source labels, and speaker notes stay connected across every output.</p>
+          <h2><Lines>{copy.capabilities.title}</Lines></h2>
+          <p className="section-lead">{copy.capabilities.lead}</p>
         </div>
       </section>
 
       <section className="output-detail">
-        {outputs.map((output) => (
+        {copy.outputs.map((output) => (
           <article key={output.title}>
             <span>{output.no}</span><h3>{output.title}</h3><p>{output.body}</p>
           </article>
@@ -82,64 +101,58 @@ export default function Home() {
       </section>
 
       <section className="section method-section" id="method">
-        <div className="section-label">02 / THE METHOD</div>
-        <div className="method-copy"><h2>Good slides begin before the canvas.</h2><p>Leego Design PPT starts with the communication job, evidence boundary, and brand inventory. Layout is selected only after the argument is stable.</p></div>
+        <div className="section-label">{copy.method.label}</div>
+        <div className="method-copy"><h2>{copy.method.title}</h2><p>{copy.method.body}</p></div>
         <ol className="method-steps">
-          <li><span>01</span><strong>Understand</strong><p>Audience, decision, sources, constraints.</p></li>
-          <li><span>02</span><strong>Structure</strong><p>One slide job, one claim, cumulative arc.</p></li>
-          <li><span>03</span><strong>Compose</strong><p>Grid, type, whitespace, image intent.</p></li>
-          <li><span>04</span><strong>Verify</strong><p>Visual, file, brand, and source QA.</p></li>
+          {copy.method.steps.map((step) => <li key={step.no}><span>{step.no}</span><strong>{step.title}</strong><p>{step.body}</p></li>)}
         </ol>
       </section>
 
       <section className="section layout-section" id="layouts">
-        <div className="section-label">03 / LAYOUT LIBRARY</div>
-        <div className="layout-heading"><h2>18 tested narrative jobs.<br />No generic page filler.</h2><p>Each layout exists because it answers a different presentation question.</p></div>
+        <div className="section-label">{copy.layouts.label}</div>
+        <div className="layout-heading"><h2><Lines>{copy.layouts.title}</Lines></h2><p>{copy.layouts.body}</p></div>
         <div className="layout-grid">
-          {layouts.map((layout, index) => <div className={`layout-tile tile-${(index % 6) + 1}`} key={layout}><span>{String(index + 1).padStart(2, "0")}</span><div className="mini-slide" aria-hidden="true"><i /><i /><i /></div><strong>{layout}</strong></div>)}
+          {copy.layouts.items.map((layout, index) => <div className={`layout-tile tile-${(index % 6) + 1}`} key={layout}><span>{String(index + 1).padStart(2, "0")}</span><div className="mini-slide" aria-hidden="true"><i /><i /><i /></div><strong>{layout}</strong></div>)}
         </div>
       </section>
 
       <section className="section system-section">
-        <div className="section-label">04 / PURPLE TECH</div>
-        <div className="system-copy"><h2>Flat color. Crisp type.<br />A disciplined accent.</h2><p>No ornamental gradient, glass effect, or card pile is needed to communicate precision.</p></div>
-        <div className="swatches" aria-label="Purple tech color system">
-          <div style={{ background: "#10132E", color: "white" }}><span>INK</span><b>#10132E</b></div>
-          <div style={{ background: "#6546FF", color: "white" }}><span>PURPLE</span><b>#6546FF</b></div>
-          <div style={{ background: "#CFE6FF" }}><span>ICE</span><b>#CFE6FF</b></div>
-          <div style={{ background: "#F7F8FC" }}><span>PAPER</span><b>#F7F8FC</b></div>
+        <div className="section-label">{copy.system.label}</div>
+        <div className="system-copy"><h2><Lines>{copy.system.title}</Lines></h2><p>{copy.system.body}</p></div>
+        <div className="swatches" aria-label={copy.a11y.colorSystem}>
+          {copy.system.swatches.map((swatch, index) => <div key={swatch.value} style={{ background: swatch.value, color: index < 2 ? "white" : undefined }}><span>{swatch.name}</span><b>{swatch.value}</b></div>)}
         </div>
       </section>
 
       <section className="section cases-section">
-        <div className="section-label">05 / ANONYMIZED CASES</div>
-        <div className="case-heading"><h2>The work is not “make it prettier.”<br />It is make the argument visible.</h2></div>
+        <div className="section-label">{copy.cases.label}</div>
+        <div className="case-heading"><h2><Lines>{copy.cases.title}</Lines></h2></div>
         <div className="case-list">
-          {cases.map((item, index) => <article key={item.kind}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.kind}</h3><div><small>BEFORE</small><strong>{item.before}</strong></div><i>→</i><div><small>AFTER</small><strong>{item.after}</strong></div><p>{item.note}</p></article>)}
+          {copy.cases.items.map((item, index) => <article key={item.kind}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.kind}</h3><div><small>{copy.cases.before}</small><strong>{item.before}</strong></div><i>→</i><div><small>{copy.cases.after}</small><strong>{item.after}</strong></div><p>{item.note}</p></article>)}
         </div>
       </section>
 
       <section className="section quality-section" id="quality">
-        <div className="section-label">06 / QA CONTRACT</div>
-        <div className="quality-heading"><h2>A build is not an approval.</h2><p>Every final page is rendered and reviewed. Files are checked separately from visual quality and sensitive information.</p></div>
+        <div className="section-label">{copy.quality.label}</div>
+        <div className="quality-heading"><h2>{copy.quality.title}</h2><p>{copy.quality.body}</p></div>
         <div className="qa-list">
-          {qa.map(([title, body], index) => <div key={title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><p>{body}</p></div>)}
+          {copy.quality.items.map(([title, body], index) => <div key={title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><p>{body}</p></div>)}
         </div>
       </section>
 
       <section className="section release-section" id="download">
-        <div className="section-label">07 / RELEASE CHANNEL</div>
-        <VersionStatus />
-        <div className="download-copy"><h2>Install the skill.<br />Inspect the example.<br />Build all three outputs.</h2><p>The public package includes only anonymized rules, templates, scripts, and example content.</p></div>
+        <div className="section-label">{copy.release.label}</div>
+        <VersionStatus labels={copy.version} />
+        <div className="download-copy"><h2><Lines>{copy.release.title}</Lines></h2><p>{copy.release.body}</p></div>
         <div className="downloads">
-          <a className="primary-action" href="/downloads/leego-design-ppt-2.0.0.zip" download>Download Skill ZIP</a>
-          <a href="/downloads/leego-design-ppt-demo.pptx" download>Example PPTX ↓</a>
-          <a href="/downloads/leego-design-ppt-demo.pdf" download>Example PDF ↓</a>
-          <a href="https://github.com/jiamo-coder/leego-design-ppt">GitHub ↗</a>
+          <a className="primary-action" href="/downloads/leego-design-ppt-2.0.0.zip" download>{copy.release.downloadSkill}</a>
+          <a href="/downloads/leego-design-ppt-demo.pptx" download>{copy.release.examplePptx}</a>
+          <a href="/downloads/leego-design-ppt-demo.pdf" download>{copy.release.examplePdf}</a>
+          <a href="https://github.com/jiamo-coder/leego-design-ppt">{copy.release.github}</a>
         </div>
       </section>
 
-      <footer><a className="brand" href="#top"><span className="brand-mark">L</span><span>Leego Design PPT</span></a><p>Presentation system · Version 2.0.0 · Updated 2026-09-01</p></footer>
+      <footer><a className="brand" href="#top"><span className="brand-mark">L</span><span>Leego Design PPT</span></a><p>{copy.footer}</p></footer>
     </main>
   );
 }
