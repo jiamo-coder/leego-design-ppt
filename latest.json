@@ -1,14 +1,14 @@
 {
   "rules": {
     "schemaVersion": 1,
-    "version": "2.2.0",
+    "version": "2.2.1",
     "minClientVersion": "2.2.0",
-    "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/rules/2.2.0-8473cfa60b3d2f1de43e42a1c55da117194908ac976a6da83f882e42809ec3ea.json",
-    "sha256": "8473cfa60b3d2f1de43e42a1c55da117194908ac976a6da83f882e42809ec3ea"
+    "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/rules/2.2.1-b7f81d89f46f5c33e0be097d38e52d54068642c194c67bbc7f7039b65dc116e1.json",
+    "sha256": "b7f81d89f46f5c33e0be097d38e52d54068642c194c67bbc7f7039b65dc116e1"
   },
   "name": "Leego Design PPT",
   "id": "leego-design-ppt",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "updatedAt": "2026-10-25",
   "channel": "stable",
   "trustedOrigin": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/",
@@ -20,17 +20,17 @@
     "pdf": "LibreOffice or host export",
     "hostVerification": "See COMPATIBILITY-REPORT.md; runtime support does not imply native client verification"
   },
-  "downloadUrl": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.2.0.zip",
+  "downloadUrl": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.2.1.zip",
   "resources": [
     {
       "id": "skill-zip",
-      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.2.0.zip",
-      "sha256": "fdbf968c110542e9130e46b3766cc9b15bfff2da9df1b01cc4e53bc300c2192a"
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-2.2.1.zip",
+      "sha256": "49f254059149d80a241921c080ebab7461629bb3a2f2e7e60da06c02339306b8"
     },
     {
       "id": "skill",
       "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/SKILL.md",
-      "sha256": "3d29b14f89d9f4ded5da016ca08a4a2f7de2bd29552564e79283c70b5ed09757"
+      "sha256": "f65094a5055f3c26df75452f85135606e76a76bb54d8488127fff5ae10caee27"
     },
     {
       "id": "interaction-lessons",
@@ -76,6 +76,11 @@
       "id": "demo-pdf",
       "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/public/downloads/leego-design-ppt-demo.pdf",
       "sha256": "c05547fa2827a8f4e03466ee12de0531c9d7f834787c2ee02f3e5a3893b27c9e"
+    },
+    {
+      "id": "brand-identity",
+      "url": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/references/brand-identity.md",
+      "sha256": "a8a65ff3678c3816f19db193deb5fe7012b0aa8ef7644335e8c85c5589ec5517"
     },
     {
       "id": "design-decision",
