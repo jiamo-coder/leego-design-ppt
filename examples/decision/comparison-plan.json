@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "libraryVersion": "2.2.0",
+  "scenario": "shareholder-review",
+  "audience": "股东",
+  "goal": "比较趋势和职责的表达方式",
+  "styles": [
+    "approved-brand"
+  ],
+  "theme": "purple-tech",
+  "preserveApprovedBrand": true,
+  "themeNote": "保留已有模板；未提供可编码主题时不要覆盖",
+  "arc": [
+    "经营结论",
+    "业绩证据",
+    "问题诊断",
+    "战略与决策"
+  ],
+  "pages": [
+    {
+      "id": "trend",
+      "layout": "chart",
+      "component": "line",
+      "status": "ready",
+      "reason": [
+        "时间变化用折线表达"
+      ],
+      "warnings": [],
+      "implementation": "native-data"
+    },
+    {
+      "id": "layers",
+      "layout": "architecture",
+      "component": null,
+      "status": "ready",
+      "reason": [
+        "按页面任务选择 architecture，不按装饰偏好随机套版"
+      ],
+      "warnings": [],
+      "implementation": "baseline-composition"
+    }
+  ],
+  "requiresReview": false,
+  "outputs": [
+    "pptx"
+  ],
+  "source": "local-reviewed-library"
+}

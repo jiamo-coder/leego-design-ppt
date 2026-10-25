@@ -1,31 +1,9 @@
-# Responsive web presentation
+# Web presentations · 2.1.0
 
-## Two modes
+The Node-only builder copies local assets and produces an offline `index.html` with CSS/JS beside it. No CDN, account, remote image or external font request is added. Paths with spaces and Chinese names are supported.
 
-Presentation mode preserves the 16:9 stage. Reading mode reflows content instead of shrinking a desktop slide.
+Desktop presentation mode uses a fixed 1280 × 720 scene scaled to the viewport. Reading mode reflows text and images; mobile starts in reading mode. Tables preserve column relationships through a horizontally scrollable region. Controls: arrows/PageUp/PageDown for slides, O for overview, N for notes, R for reading. Overview shows all pages and clicking a page returns to presentation. Do not claim audience-window synchronization: this version does not implement it.
 
-Validate reading mode at 1440, 1024, 768, 390, and 320 px. Validate 200% browser zoom.
+Keyboard navigation ignores input/editable controls. Storage is per deck and guarded against file-origin restrictions. Touch swipes navigate only in presentation mode, not during vertical reading. No global wheel interception, autoplay or animated number counting. Reduced-motion has a static result.
 
-## Required controls
-
-- Arrow/PageUp/PageDown/Space navigation.
-- Wheel navigation with throttling.
-- Touch swipe.
-- Slide overview.
-- Speaker notes view.
-- Audience window synchronization when supported.
-- Visible progress and current slide number.
-- `prefers-reduced-motion` support.
-
-## Implementation rules
-
-- Use semantic HTML and accessible control labels.
-- Keep the deck usable without external network requests.
-- Use CSS `object-fit: contain` by default for evidence assets.
-- Avoid hidden overflow as a substitute for fitting text.
-- Use a stable aspect-ratio frame for presentation mode and a linear document flow for reading mode.
-- The bundled `assets/web-runtime.css` and `assets/web-runtime.js` are a baseline, not a mandatory brand style.
-
-## Offline behavior
-
-Bundle core runtime, theme, and local assets. If a remote rule or version manifest fails, show the build-time version and continue without blocking the deck.
+Check desktop and 390/320 px reading, long titles, table overflow, images, keyboard and overview. A CSS preference or successful build is not a browser test. The included print CSS targets presentation mode; PDF parity is verified by exporting the PPTX instead.

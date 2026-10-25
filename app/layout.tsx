@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Leego Design PPT — 专业演示设计系统",
   description:
-    "从同一语义源生成自适应网页演示、可编辑 PPTX 与稳定版式 PDF 的专业演示设计 Skill。",
+    "根据受众、内容与证据选择设计的 PPT Skill，支持 H5 交互、可编辑 PPTX、PDF 与经过验证的持续规则更新。",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

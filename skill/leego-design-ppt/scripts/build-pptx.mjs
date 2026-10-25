@@ -1,89 +1,48 @@
 #!/usr/bin/env node
-import fs from "node:fs/promises";
-import path from "node:path";
-import { parseArgs, readJson, writeFileEnsured } from "./lib.mjs";
-
-const args = parseArgs(process.argv);
-const input = path.resolve(args.input || "deck-spec.json");
-const output = path.resolve(args.output || "output/pptx/deck.pptx");
-const renderDir = path.resolve(args.renders || path.join(path.dirname(output), "renders"));
-const moduleRoot = args["module-root"] || process.env.OAI_WORKSPACE_NODE_MODULES;
-if (!moduleRoot) throw new Error("Set OAI_WORKSPACE_NODE_MODULES or pass --module-root to the bundled node_modules directory.");
-const artifact = await import(path.join(moduleRoot, "@oai/artifact-tool/dist/artifact_tool.mjs"));
-const { Presentation, PresentationFile } = artifact;
-const spec = await readJson(input);
-const deck = Presentation.create({ slideSize: { width: 1280, height: 720 } });
-const C = { ink: "#10132E", navy: "#15194A", purple: "#6546FF", ice: "#CFE6FF", paper: "#F7F8FC", white: "#FFFFFF", muted: "#69708A", line: "#DCE1EF" };
-
-function shape(slide, name, position, fill = "none", lineFill = "none") {
-  return slide.shapes.add({ geometry: "rect", name, position, fill, line: { style: "solid", fill: lineFill, width: lineFill === "none" ? 0 : 1 } });
-}
-
-function textBox(slide, name, text, position, style) {
-  const box = shape(slide, name, position);
-  box.text = text;
-  box.text.style = style;
-  return box;
-}
-
-function addChrome(slide, index, eyebrow) {
-  textBox(slide, `eyebrow-${index}`, eyebrow || `SECTION ${String(index + 1).padStart(2, "0")}`, { left: 72, top: 54, width: 400, height: 24 }, { fontSize: 12, bold: true, color: C.purple });
-  textBox(slide, `page-${index}`, String(index + 1).padStart(2, "0"), { left: 1160, top: 650, width: 48, height: 22 }, { fontSize: 11, bold: true, color: C.muted, alignment: "right" });
-  shape(slide, `accent-${index}`, { left: 1264, top: 0, width: 16, height: 720 }, C.purple);
-}
-
-function addItemGrid(slide, slideSpec, top = 300) {
-  const items = slideSpec.items || [];
-  const count = Math.max(items.length, 1);
-  const cols = count <= 2 ? count : count <= 4 ? 2 : 3;
-  const rows = Math.ceil(count / cols);
-  const gap = 24;
-  const width = (1136 - gap * (cols - 1)) / cols;
-  const height = Math.min(210, (350 - gap * (rows - 1)) / rows);
-  items.forEach((item, i) => {
-    const col = i % cols;
-    const row = Math.floor(i / cols);
-    const x = 72 + col * (width + gap);
-    const y = top + row * (height + gap);
-    shape(slide, `item-line-${i}`, { left: x, top: y, width, height: 2 }, C.purple);
-    if (item.value) textBox(slide, `item-value-${i}`, String(item.value), { left: x, top: y + 18, width, height: 58 }, { fontSize: 34, bold: true, color: C.purple });
-    textBox(slide, `item-title-${i}`, item.title || "", { left: x, top: y + (item.value ? 76 : 22), width, height: 38 }, { fontSize: 22, bold: true, color: C.ink });
-    textBox(slide, `item-body-${i}`, item.body || "", { left: x, top: y + (item.value ? 116 : 64), width, height: Math.max(48, height - 122) }, { fontSize: 16, color: C.muted });
-  });
-}
-
-for (const [index, slideSpec] of spec.slides.entries()) {
-  const slide = deck.slides.add();
-  slide.background.fill = index === 0 ? C.navy : C.paper;
-  if (index === 0) {
-    textBox(slide, "cover-kicker", slideSpec.eyebrow || "LEEGO DESIGN PPT / 2.0.0", { left: 72, top: 70, width: 480, height: 26 }, { fontSize: 13, bold: true, color: C.ice });
-    textBox(slide, "cover-title", slideSpec.title, { left: 72, top: 220, width: 920, height: 190 }, { fontSize: 58, bold: true, color: C.white });
-    textBox(slide, "cover-body", slideSpec.body || "", { left: 72, top: 452, width: 720, height: 90 }, { fontSize: 21, color: C.ice });
-    shape(slide, "cover-accent", { left: 72, top: 600, width: 210, height: 8 }, C.purple);
-    textBox(slide, "cover-meta", `${spec.audience} · ${spec.purpose}`, { left: 72, top: 632, width: 760, height: 28 }, { fontSize: 12, bold: true, color: C.ice });
-    shape(slide, "cover-rail", { left: 1160, top: 0, width: 120, height: 720 }, C.purple);
-  } else {
-    addChrome(slide, index, slideSpec.eyebrow);
-    textBox(slide, `title-${index}`, slideSpec.title, { left: 72, top: 112, width: 1040, height: 108 }, { fontSize: 43, bold: true, color: C.ink });
-    if (slideSpec.body) textBox(slide, `body-${index}`, slideSpec.body, { left: 72, top: 226, width: 950, height: 66 }, { fontSize: 19, color: C.muted });
-    addItemGrid(slide, slideSpec, slideSpec.body ? 326 : 270);
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { parseArgs, writeFileEnsured } from './lib.mjs';
+import { loadDeck, createScene } from './scene.mjs';
+let PptxGenJS,imageSize;
+try { PptxGenJS=(await import('pptxgenjs')).default;imageSize=(await import('image-size')).imageSize; }
+catch { throw new Error('PPTX dependencies missing. In the skill folder run: npm ci --ignore-scripts. Node.js 20+ required; no Codex runtime needed.'); }
+const args=parseArgs(process.argv), input=path.resolve(args.input||'deck-spec.json'), output=path.resolve(args.output||'output/deck.pptx');
+const deck=await loadDeck(input), pptx=new PptxGenJS();
+pptx.defineLayout({name:'LEEGO',width:13.333333,height:7.5});pptx.layout='LEEGO';
+pptx.author='Leego Design PPT';pptx.subject=deck.spec.purpose;pptx.title=deck.spec.title;pptx.lang=deck.spec.language;
+pptx.theme={headFontFace:deck.font,bodyFontFace:deck.font,lang:deck.spec.language};
+const hex=c=>c.replace('#',''), box=o=>({x:o.x/96,y:o.y/96,w:o.w/96,h:o.h/96});
+const scenes=deck.spec.slides.map((s,i)=>createScene(deck,s,i));
+for(const scene of scenes) {
+  const slide=pptx.addSlide();slide.background={color:hex(scene.background)};
+  for(const o of scene.objects) {
+    if(o.type==='rect')slide.addShape(pptx.ShapeType.rect,{...box(o),line:{color:hex(o.color),transparency:100},fill:{color:hex(o.color)}});
+    if(o.type==='text')slide.addText(o.text,{...box(o),fontFace:deck.font,fontSize:o.size*.75,bold:o.weight>=600,color:hex(o.color),margin:0,breakLine:false,valign:'top',paraSpaceAfterPt:0,lineSpacingMultiple:1.0});
+    if(o.type==='image') {
+      const bytes=await fs.readFile(o.resolved), dim=imageSize(bytes);
+      if(!['png','jpg','jpeg'].includes(dim.type))throw new Error(`${scene.id}: use PNG/JPEG for portable PowerPoint image rendering`);
+      if(o.minimumWidth && dim.width<o.minimumWidth || o.minimumHeight && dim.height<o.minimumHeight)throw new Error(`${scene.id}: image below declared minimum resolution`);
+      if(o.transparentRequired && (dim.type!=='png' || ![4,6].includes(bytes[25]) && !bytes.includes(Buffer.from('tRNS'))))throw new Error(`${scene.id}: transparentRequired needs a PNG with an alpha channel`);
+      const mime=dim.type==='png'?'png':'jpeg', data=`image/${mime};base64,${bytes.toString('base64')}`;
+      const b=box(o);let sizing;
+      if(o.fit==='contain') { const scale=Math.min(b.w/dim.width,b.h/dim.height),w=dim.width*scale,h=dim.height*scale; sizing={x:b.x+(b.w-w)/2,y:b.y+(b.h-h)/2,w,h}; }
+      else {
+        const aspect=dim.width/dim.height,target=b.w/b.h;
+        const cw=aspect>target?target/aspect:1,ch=aspect>target?1:aspect/target;
+        const cx=Math.min(1-cw,Math.max(0,o.focalPoint.x-cw/2)),cy=Math.min(1-ch,Math.max(0,o.focalPoint.y-ch/2));
+        const w=b.w/cw,h=b.h/ch;sizing={x:b.x,y:b.y,w,h,sizing:{type:'crop',x:cx*w,y:cy*h,w:b.w,h:b.h}};
+      }
+      slide.addImage({data,...sizing,altText:o.alt});
+    }
+    if(o.type==='table') {
+      const rows=[o.columns.map(text=>({text:String(text),options:{bold:true,color:'FFFFFF',fill:hex(deck.colors.navy)}})),...o.rows.map(r=>r.map(v=>String(v??'未提供')))];
+      slide.addTable(rows,{...box(o),fontFace:deck.font,fontSize:17,color:hex(deck.colors.ink),border:{type:'solid',color:hex(deck.colors.line),pt:1},margin:8,rowH:o.h/96/rows.length,colW:Array(o.columns.length).fill(o.w/96/o.columns.length),autoPage:false,fill:hex(deck.colors.paper),valign:'mid'});
+    }
+    if(o.type==='chart') slide.addChart(o.chartType==='line'?pptx.ChartType.line:pptx.ChartType.bar,o.series.map(s=>({name:s.name,labels:o.labels,values:s.values})),{...box(o),catAxisLabelFontFace:deck.font,valAxisLabelFontFace:deck.font,catAxisLabelFontSize:13,valAxisLabelFontSize:13,showLegend:true,legendPos:'b',legendFontFace:deck.font,legendFontSize:12,showTitle:true,title:`${o.period} · ${o.unit}`,titleFontFace:deck.font,titleFontSize:14,showValue:false,showCatName:false,barDir:'col',chartColors:[hex(deck.colors.purple),hex(deck.colors.success),hex(deck.colors.warning)],showBorder:false,valAxisMinVal:Math.min(0,...o.series.flatMap(s=>s.values))});
   }
-  const notes = slideSpec.notes || {};
-  const sourceText = (slideSpec.sources || []).length ? `\n<sources>\n${slideSpec.sources.map((s) => `- ${s}`).join("\n")}\n</sources>` : "";
-  slide.speakerNotes.textFrame.setText([notes.purpose, ...(notes.talkingPoints || []), notes.transition].filter(Boolean).join("\n") + sourceText);
+  slide.addNotes(scene.notes);
 }
-
-await fs.mkdir(renderDir, { recursive: true });
-for (const [index, slide] of deck.slides.items.entries()) {
-  const stem = `slide-${String(index + 1).padStart(2, "0")}`;
-  const png = await deck.export({ slide, format: "png", scale: 2 });
-  await writeFileEnsured(path.join(renderDir, `${stem}.png`), new Uint8Array(await png.arrayBuffer()));
-  const layout = await slide.export({ format: "layout" });
-  await writeFileEnsured(path.join(renderDir, `${stem}.layout.json`), await layout.text());
-}
-const montage = await deck.export({ format: "webp", montage: true, scale: 1 });
-await writeFileEnsured(path.join(renderDir, "montage.webp"), new Uint8Array(await montage.arrayBuffer()));
-await fs.mkdir(path.dirname(output), { recursive: true });
-const pptx = await PresentationFile.exportPptx(deck);
-await pptx.save(output);
-console.log(`Built PPTX: ${output}`);
+await fs.mkdir(path.dirname(output),{recursive:true});
+await pptx.writeFile({fileName:output});
+await writeFileEnsured(`${output}.report.json`,JSON.stringify({version:'2.1.0',engine:'pptxgenjs',slides:scenes.length,fontRequested:deck.font,fontEmbedded:false,visualReview:'pending',editability:'native text, shapes, tables, charts; separate raster images',scenes},null,2));
+console.log(`Built editable PPTX: ${output}. Render and inspect before delivery; requested font must exist on the viewing/export host.`);

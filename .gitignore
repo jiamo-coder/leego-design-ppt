@@ -38,3 +38,6 @@ next-env.d.ts
 /output/
 /tmp/
 /work/
+
+# Skill dependencies stay local
+skill/leego-design-ppt/node_modules/

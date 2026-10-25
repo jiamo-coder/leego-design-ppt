@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "themes": [
     {
       "id": "purple-tech",
@@ -11,7 +11,11 @@
       "id": "ink-editorial",
       "name": "Ink Editorial",
       "description": "Warm-white, near-black and one supplied brand accent for brand books and product narratives.",
-      "overrides": { "ink": "#141414", "paper": "#FAF9F5", "muted": "#6A6863" }
+      "overrides": {
+        "ink": "#141414",
+        "paper": "#FAF9F5",
+        "muted": "#6A6863"
+      }
     }
   ]
 }

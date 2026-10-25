@@ -3,32 +3,83 @@
   "$id": "https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/skill/leego-design-ppt/assets/deck-spec.schema.json",
   "title": "Leego Design PPT deck specification",
   "type": "object",
-  "required": ["schemaVersion", "title", "language", "audience", "purpose", "brand", "theme", "slides"],
+  "required": [
+    "schemaVersion",
+    "title",
+    "language",
+    "audience",
+    "purpose",
+    "brand",
+    "theme",
+    "slides"
+  ],
   "properties": {
-    "schemaVersion": { "const": "2.0" },
-    "title": { "type": "string", "minLength": 1 },
-    "language": { "type": "string", "minLength": 2 },
-    "audience": { "type": "string", "minLength": 1 },
-    "purpose": { "type": "string", "minLength": 1 },
-    "centralTakeaway": { "type": "string" },
+    "schemaVersion": {
+      "const": "2.0"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "centralTakeaway": {
+      "type": "string"
+    },
     "brand": {
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
-        "name": { "type": "string" },
-        "englishName": { "type": "string" },
-        "logo": { "type": "string" }
+        "name": {
+          "type": "string"
+        },
+        "englishName": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
       },
       "additionalProperties": true
     },
-    "theme": { "type": "string", "minLength": 1 },
-    "bannedTerms": { "type": "array", "items": { "type": "string" } },
+    "theme": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bannedTerms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "replacements": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["from", "to"],
-        "properties": { "from": { "type": "string" }, "to": { "type": "string" } }
+        "required": [
+          "from",
+          "to"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        }
       }
     },
     "slides": {
@@ -36,46 +87,214 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "narrativeJob", "layout", "title"],
+        "required": [
+          "id",
+          "narrativeJob",
+          "layout",
+          "title"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "narrativeJob": { "type": "string" },
-          "layout": { "type": "string" },
-          "title": { "type": "string" },
-          "eyebrow": { "type": "string" },
-          "body": { "type": "string" },
-          "items": { "type": "array", "items": { "type": "object" } },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "narrativeJob": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "eyebrow": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
           "visuals": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["src", "fit"],
+              "required": [
+                "src",
+                "fit"
+              ],
               "properties": {
-                "src": { "type": "string" },
-                "alt": { "type": "string" },
-                "fit": { "enum": ["contain", "cover"] },
+                "src": {
+                  "type": "string"
+                },
+                "alt": {
+                  "type": "string"
+                },
+                "fit": {
+                  "enum": [
+                    "contain",
+                    "cover"
+                  ]
+                },
                 "focalPoint": {
                   "type": "object",
-                  "properties": { "x": { "type": "number", "minimum": 0, "maximum": 1 }, "y": { "type": "number", "minimum": 0, "maximum": 1 } }
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  }
                 },
-                "transparentRequired": { "type": "boolean" },
-                "minimumWidth": { "type": "integer", "minimum": 1 },
-                "minimumHeight": { "type": "integer", "minimum": 1 },
-                "license": { "type": "string" }
+                "transparentRequired": {
+                  "type": "boolean"
+                },
+                "minimumWidth": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minimumHeight": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "license": {
+                  "type": "string"
+                }
               }
             }
           },
-          "sources": { "type": "array", "items": { "type": "string" } },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "notes": {
             "type": "object",
             "properties": {
-              "purpose": { "type": "string" },
-              "talkingPoints": { "type": "array", "items": { "type": "string" } },
-              "transition": { "type": "string" }
+              "purpose": {
+                "type": "string"
+              },
+              "talkingPoints": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "transition": {
+                "type": "string"
+              }
+            }
+          },
+          "table": {
+            "type": "object",
+            "required": [
+              "columns",
+              "rows"
+            ],
+            "properties": {
+              "columns": {
+                "type": "array",
+                "maxItems": 6,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "rows": {
+                "type": "array",
+                "maxItems": 7,
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "chart": {
+            "type": "object",
+            "required": [
+              "type",
+              "unit",
+              "period",
+              "labels",
+              "series"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "bar",
+                  "line"
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "labels": {
+                "type": "array",
+                "maxItems": 8,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "series": {
+                "type": "array",
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "values"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },
         "additionalProperties": true
+      }
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "fontFace": {
+          "type": "string"
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          }
+        }
       }
     }
   },

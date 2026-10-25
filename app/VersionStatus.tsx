@@ -9,8 +9,8 @@ type Manifest = {
 };
 
 const FALLBACK: Manifest = {
-  version: "2.0.0",
-  updatedAt: "2026-09-01",
+  version: "2.2.0",
+  updatedAt: "2026-10-25",
   summary: ["Bundled release snapshot"],
 };
 
@@ -35,6 +35,10 @@ export default function VersionStatus({
       })
       .then((next) => {
         if (!/^\d+\.\d+\.\d+$/.test(next.version)) throw new Error("invalid version");
+        const newer = next.version.split(".").map(Number);
+        const current = FALLBACK.version.split(".").map(Number);
+        const diff = newer.findIndex((value,index) => value !== current[index]);
+        if (diff >= 0 && newer[diff] < current[diff]) throw new Error("older remote release");
         setManifest(next);
         setMode("live");
       })

@@ -7,7 +7,7 @@
 3. File: openability, page count, ordering, editable PPTX objects, links, and metadata.
 4. Safety: banned terms, brand residue, private names, internal data, unlicensed assets, and secrets.
 
-## Automated checks
+## Required checks (automatic plus manual)
 
 - invalid or missing `deck-spec` fields;
 - unresolved placeholders and TODO markers;
@@ -18,6 +18,8 @@
 - HTML broken assets and external runtime dependencies;
 - PDF/PPTX page-count mismatch;
 - manifest hashes and resource URLs.
+
+The included scripts cover schema, supported content, basic geometry and text/asset checks. They do not automatically prove visual quality, office-suite fidelity, PDF font correctness, every link, or every item above. Inspect rendered pages and extracted file structures separately. Record the actual host, version, font, tested formats and untested platforms; importing a Skill does not prove the host agent can generate every format.
 
 ## Release order
 

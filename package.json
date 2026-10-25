@@ -1,6 +1,6 @@
 {
   "name": "leego-design-ppt",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -12,13 +12,16 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern public/demo --ignore-pattern skill",
     "deck:validate": "node skill/leego-design-ppt/scripts/validate-deck-spec.mjs --input examples/demo/deck-spec.json",
     "deck:web": "node skill/leego-design-ppt/scripts/build-web.mjs --input examples/demo/deck-spec.json --output public/demo",
-    "deck:pptx": "node skill/leego-design-ppt/scripts/build-pptx.mjs --input examples/demo/deck-spec.json --output output/pptx/leego-design-ppt-demo.pptx --renders output/pptx/renders",
-    "deck:pdf": "python3 skill/leego-design-ppt/scripts/build-pdf.py --renders output/pptx/renders --output output/pdf/leego-design-ppt-demo.pdf",
-    "deck:qa": "node skill/leego-design-ppt/scripts/quality-check.mjs --input examples/demo/deck-spec.json --output output",
+    "deck:pptx": "node skill/leego-design-ppt/scripts/build-pptx.mjs --input examples/demo/deck-spec.json --output output/pptx/leego-design-ppt-demo.pptx",
+    "deck:pdf": "node skill/leego-design-ppt/scripts/export-pdf.mjs --input output/pptx/leego-design-ppt-demo.pptx --output output/pdf/leego-design-ppt-demo.pdf",
+    "deck:qa": "node skill/leego-design-ppt/scripts/quality-check.mjs --input examples/demo/deck-spec.json --output output/pptx && node skill/leego-design-ppt/scripts/quality-check.mjs --input examples/demo/deck-spec.json --output public/demo",
     "deck:all": "npm run deck:validate && npm run deck:web && npm run deck:pptx && npm run deck:pdf && npm run deck:qa",
     "release:build": "node scripts/build-release.mjs",
     "release:publish": "node scripts/publish-release.mjs",
-    "skill:install": "node scripts/install-local.mjs"
+    "skill:install": "node scripts/install-local.mjs",
+    "test:portable": "node --test tests/portable.test.mjs",
+    "test:updates": "node --test tests/updates.test.mjs",
+    "test:design": "node --test tests/design.test.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

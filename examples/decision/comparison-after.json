@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "2.0",
+  "title": "同题设计比较",
+  "language": "zh-CN",
+  "audience": "股东",
+  "purpose": "比较趋势和职责的表达方式",
+  "centralTakeaway": "由页面任务决定表达方式",
+  "brand": {
+    "name": "Leego Design PPT"
+  },
+  "theme": "purple-tech",
+  "style": {
+    "fontFace": "Source Han Sans SC"
+  },
+  "slides": [
+    {
+      "id": "trend",
+      "narrativeJob": "呈现季度变化",
+      "layout": "chart",
+      "title": "季度收入持续增长",
+      "body": "同一组数据：展示时间变化，而非四个孤立数字。",
+      "sources": [
+        "合成测试数据，仅用于设计比较"
+      ],
+      "chart": {
+        "type": "line",
+        "unit": "万元",
+        "period": "示例季度",
+        "labels": [
+          "第一季度",
+          "第二季度",
+          "第三季度",
+          "第四季度"
+        ],
+        "series": [
+          {
+            "name": "收入",
+            "values": [
+              30,
+              45,
+              50,
+              70
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "layers",
+      "narrativeJob": "明确系统分层与职责",
+      "layout": "architecture",
+      "title": "三层职责需要清晰分开",
+      "body": "同样的内容，通过层级关系展示职责。",
+      "items": [
+        {
+          "title": "数据层",
+          "body": "统一数据口径与来源"
+        },
+        {
+          "title": "应用层",
+          "body": "承载业务操作与规则"
+        },
+        {
+          "title": "治理层",
+          "body": "管理权限与异常追踪"
+        }
+      ],
+      "sources": [
+        "合成测试数据，仅用于设计比较"
+      ]
+    }
+  ]
+}

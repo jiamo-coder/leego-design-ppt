@@ -1,0 +1,474 @@
+{
+  "version": "2.2.0",
+  "provenance": "Original generalized rules, not externally collected designs",
+  "styles": [
+    {
+      "id": "minimal-business",
+      "name": "极简商务",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "经营",
+        "战略",
+        "管理"
+      ],
+      "principles": [
+        "克制强调色",
+        "高留白"
+      ],
+      "avoid": [
+        "证据多时拆页，不靠缩字"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "consulting",
+      "name": "专业咨询",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "股东",
+        "董事会",
+        "咨询",
+        "决策"
+      ],
+      "principles": [
+        "结论标题",
+        "结构化证据"
+      ],
+      "avoid": [
+        "无来源不得绘制经营结论"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "technology",
+      "name": "科技创新",
+      "theme": "purple-tech",
+      "scenarios": [
+        "技术",
+        "架构",
+        "系统"
+      ],
+      "principles": [
+        "层级关系",
+        "冷色强调"
+      ],
+      "avoid": [
+        "不以光效代替技术逻辑"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "premium-brand",
+      "name": "高级品牌",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "品牌",
+        "招商",
+        "合作"
+      ],
+      "principles": [
+        "影像叙事",
+        "暖中性色"
+      ],
+      "avoid": [
+        "保留现有品牌优先，素材不足不伪造"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "data-operations",
+      "name": "数据经营",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "经营",
+        "业绩",
+        "复盘"
+      ],
+      "principles": [
+        "指标口径",
+        "趋势与比较"
+      ],
+      "avoid": [
+        "缺失数据不填零"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "creative-marketing",
+      "name": "创意营销",
+      "theme": "purple-tech",
+      "scenarios": [
+        "营销",
+        "活动",
+        "发布"
+      ],
+      "principles": [
+        "主视觉",
+        "有节奏的对比"
+      ],
+      "avoid": [
+        "正式决策不为吸睛牺牲证据"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "academic",
+      "name": "学术研究",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "研究",
+        "实验",
+        "学术"
+      ],
+      "principles": [
+        "图表标注",
+        "方法与局限"
+      ],
+      "avoid": [
+        "不把相关性描述为因果"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    },
+    {
+      "id": "image-story",
+      "name": "图片叙事",
+      "theme": "ink-editorial",
+      "scenarios": [
+        "空间",
+        "产品",
+        "案例"
+      ],
+      "principles": [
+        "完整实物",
+        "阅读节奏"
+      ],
+      "avoid": [
+        "不得裁掉截图文字或产品轮廓"
+      ],
+      "implementation": "style-guidance",
+      "provenance": "original-rule"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "cover",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Open with purpose, stakes, or a precise point of view."
+    },
+    {
+      "id": "executive-summary",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "State 3-4 conclusions and the decision required."
+    },
+    {
+      "id": "timeline",
+      "implementation": "baseline-composition",
+      "maxItems": 4,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Show change across time with milestones and implications."
+    },
+    {
+      "id": "problem-matrix",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Compare recurring problems across actors or stages."
+    },
+    {
+      "id": "principles",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Present a small set of non-overlapping rules."
+    },
+    {
+      "id": "split-visual",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "没有本地图片时不可使用",
+      "purpose": "Pair one dominant image with one claim and support."
+    },
+    {
+      "id": "architecture",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Explain layers, ownership, and system boundaries."
+    },
+    {
+      "id": "data-flow",
+      "implementation": "baseline-composition",
+      "maxItems": 4,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Show sources, transformation, outputs, and controls."
+    },
+    {
+      "id": "process",
+      "implementation": "baseline-composition",
+      "maxItems": 4,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Explain a sequence with stage owners and gates."
+    },
+    {
+      "id": "dual-screenshot",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "没有本地图片时不可使用",
+      "purpose": "Compare two complete screens without cropping text."
+    },
+    {
+      "id": "product-matrix",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Organize products by role, need, or lifecycle."
+    },
+    {
+      "id": "vi-showcase",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "没有本地图片时不可使用",
+      "purpose": "Present a complete VI sheet or application set with contain fit."
+    },
+    {
+      "id": "comparison",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Make the consequence of two options explicit."
+    },
+    {
+      "id": "governance",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Clarify rights, responsibilities, decisions, and escalation."
+    },
+    {
+      "id": "evidence-wall",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "没有本地图片时不可使用",
+      "purpose": "Show multiple evidence thumbnails with source labels."
+    },
+    {
+      "id": "roadmap",
+      "implementation": "baseline-composition",
+      "maxItems": 4,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Connect phases, capabilities, gates, and outcomes."
+    },
+    {
+      "id": "kpi",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Show a small metric set with definition and action threshold."
+    },
+    {
+      "id": "decision-close",
+      "implementation": "baseline-composition",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Resolve the opening and specify the next decision or action."
+    },
+    {
+      "id": "table",
+      "implementation": "native-data",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Compare editable rows and columns with units and scope."
+    },
+    {
+      "id": "chart",
+      "implementation": "native-data",
+      "maxItems": 6,
+      "maxVisuals": 4,
+      "constraints": [
+        "保留来源、图片完整性与可读字号；过密先拆页"
+      ],
+      "avoid": "不得把未提供的事实填进空位",
+      "purpose": "Explain measured magnitudes or trends with editable native data."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "shareholder-review",
+      "name": "股东经营汇报",
+      "styles": [
+        "consulting",
+        "data-operations"
+      ],
+      "arc": [
+        "经营结论",
+        "业绩证据",
+        "问题诊断",
+        "战略与决策"
+      ]
+    },
+    {
+      "id": "business-review",
+      "name": "经营复盘",
+      "styles": [
+        "data-operations",
+        "minimal-business"
+      ],
+      "arc": [
+        "结果与目标",
+        "趋势与差异",
+        "原因与证据",
+        "行动与责任"
+      ]
+    },
+    {
+      "id": "brand-partnership",
+      "name": "品牌与合作",
+      "styles": [
+        "premium-brand",
+        "image-story"
+      ],
+      "arc": [
+        "品牌主张",
+        "产品与场景",
+        "合作价值与证据",
+        "合作边界与下一步"
+      ]
+    },
+    {
+      "id": "product-technology",
+      "name": "产品与技术",
+      "styles": [
+        "technology",
+        "minimal-business"
+      ],
+      "arc": [
+        "用户问题",
+        "解决方式",
+        "能力与架构证据",
+        "边界与计划"
+      ]
+    },
+    {
+      "id": "research",
+      "name": "研究报告",
+      "styles": [
+        "academic",
+        "consulting"
+      ],
+      "arc": [
+        "研究问题",
+        "方法与数据",
+        "发现与局限",
+        "结论与后续"
+      ]
+    },
+    {
+      "id": "campaign",
+      "name": "营销提案",
+      "styles": [
+        "creative-marketing",
+        "data-operations"
+      ],
+      "arc": [
+        "目标与受众",
+        "核心创意",
+        "执行与证据",
+        "衡量与计划"
+      ]
+    }
+  ],
+  "coverage": {
+    "styleFamilies": 8,
+    "baselineLayouts": 20,
+    "externalReviewedCases": 0,
+    "plannedPagePatterns": 30,
+    "plannedVisualizationComponents": 20
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "audience": "股东",
+  "scenario": "shareholder-review",
+  "goal": "判断下一年度资源配置",
+  "brand": {
+    "approved": false
+  },
+  "delivery": "pptx",
+  "slides": [
+    {
+      "id": "summary",
+      "intent": "conclusion",
+      "items": 3
+    },
+    {
+      "id": "trend",
+      "intent": "trend",
+      "data": {
+        "available": true,
+        "labels": 4,
+        "series": 1,
+        "hasMissing": false,
+        "unit": "万元",
+        "period": "示例季度",
+        "source": "合成示例"
+      }
+    },
+    {
+      "id": "comparison",
+      "intent": "comparison",
+      "table": {
+        "rows": 4,
+        "columns": 3
+      }
+    },
+    {
+      "id": "roadmap",
+      "intent": "roadmap",
+      "items": 3
+    }
+  ]
+}
