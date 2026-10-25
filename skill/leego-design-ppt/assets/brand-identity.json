@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "skill.leego-ppt",
+  "name": "Leego Design PPT",
+  "family": "V006",
+  "provider": "Leego Design UI",
+  "catalogVersion": "2.28.2",
+  "catalogSha256": "efe820cf61ed2ab016d61f352f38b2c2e8c741c5fde5b179c97a5089106cec75",
+  "accent": "#7256E8",
+  "stableUrl": "https://smalltypeui.qiaokiai.com/skills/leego-design-ui/site/icon-api/v1/icons/skill.leego-ppt/app",
+  "variants": {
+    "app": {
+      "url": "https://smalltypeui.qiaokiai.com/skills/leego-design-ui/site/icon-api/v1/assets/f0193a256fd1dab29bf3467da4fa29ffe64536f5b1416af0139320b25c80a2e2.svg",
+      "sha256": "f0193a256fd1dab29bf3467da4fa29ffe64536f5b1416af0139320b25c80a2e2",
+      "format": "svg",
+      "bytes": 692,
+      "bundledPath": "assets/identity/leego-ppt.svg"
+    },
+    "white": {
+      "url": "https://smalltypeui.qiaokiai.com/skills/leego-design-ui/site/icon-api/v1/assets/a18bd51ed83bf029bdb2074ca577ccc21fd99bbe8c987caea2efe1e8d57b4733.svg",
+      "sha256": "a18bd51ed83bf029bdb2074ca577ccc21fd99bbe8c987caea2efe1e8d57b4733",
+      "format": "svg",
+      "bytes": 902
+    },
+    "mono": {
+      "url": "https://smalltypeui.qiaokiai.com/skills/leego-design-ui/site/icon-api/v1/assets/b24ef7e2a2e85b0e1c0ea363e222bbf0efbb336f76ddc5b9c02ef9331859afd0.svg",
+      "sha256": "b24ef7e2a2e85b0e1c0ea363e222bbf0efbb336f76ddc5b9c02ef9331859afd0",
+      "format": "svg",
+      "bytes": 692
+    },
+    "png": {
+      "url": "https://smalltypeui.qiaokiai.com/skills/leego-design-ui/site/icon-api/v1/assets/843e75e3cd98dd728597c608bb11d1e694aee204d7d7ff0013a876b417c5ce3c.png",
+      "sha256": "843e75e3cd98dd728597c608bb11d1e694aee204d7d7ff0013a876b417c5ce3c",
+      "format": "png",
+      "bytes": 9539,
+      "bundledPath": "assets/identity/leego-ppt.png"
+    }
+  }
+}

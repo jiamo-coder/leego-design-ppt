@@ -31,9 +31,9 @@ const zh: SiteCopy = {
     colorSystem: "紫蓝科技色彩系统",
     language: "切换网站语言",
   },
-  nav: { capabilities: "能力", layouts: "版式", quality: "质量", download: "获取 2.2.0" },
+  nav: { capabilities: "能力", layouts: "版式", quality: "质量", download: "获取 2.2.1" },
   hero: {
-    version: "版本 2.2.0 · 演示系统",
+    version: "版本 2.2.1 · 演示系统",
     lineOne: "先判断内容。",
     lineTwo: "再决定设计。",
     lead: "从受众、决策和证据出发，选择适合的叙事、版式与图表。保留 H5 交互演示、可编辑 PPTX 和配套 PDF，让新经验通过经过验证的规则持续进入下一次创作。",
@@ -124,7 +124,7 @@ const zh: SiteCopy = {
     github: "GitHub ↗",
   },
   version: { live: "实时发布通道", snapshot: "内置版本快照", updated: "更新时间" },
-  footer: "演示系统 · 版本 2.2.0 · 更新于 2026-10-25",
+  footer: "演示系统 · 版本 2.2.1 · 更新于 2026-10-25",
 };
 
 const en: SiteCopy = {
@@ -137,9 +137,9 @@ const en: SiteCopy = {
     colorSystem: "Purple tech color system",
     language: "Switch website language",
   },
-  nav: { capabilities: "Capabilities", layouts: "Layouts", quality: "Quality", download: "Get 2.2.0" },
+  nav: { capabilities: "Capabilities", layouts: "Layouts", quality: "Quality", download: "Get 2.2.1" },
   hero: {
-    version: "Version 2.2.0 · Presentation system",
+    version: "Version 2.2.1 · Presentation system",
     lineOne: "Read the content.",
     lineTwo: "Choose the design.",
     lead: "Choose narrative, layout and charts around the audience, decision and evidence. Keep interactive H5, editable PPTX and companion PDF, with reviewed rules available on the next task.",
@@ -230,7 +230,7 @@ const en: SiteCopy = {
     github: "GitHub ↗",
   },
   version: { live: "LIVE RELEASE CHANNEL", snapshot: "BUNDLED RELEASE SNAPSHOT", updated: "Updated" },
-  footer: "Presentation system · Version 2.2.0 · Updated 2026-10-25",
+  footer: "Presentation system · Version 2.2.1 · Updated 2026-10-25",
 };
 
 export const siteCopy: Record<Locale, SiteCopy> = { zh, en };

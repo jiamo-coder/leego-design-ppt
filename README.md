@@ -1,12 +1,12 @@
 # Leego Design PPT
 
-2.2.0 · 2026-10-25
+2.2.1 · 2026-10-25
 
 Presentation design rules and portable output helpers for standard Agent Skills hosts. Preserve existing templates and generate the formats the user requests. Node.js 20+ is required for scripts. No Codex-only runtime, credentials or paid API is required.
 
 ## Install and share
 
-Download `public/downloads/leego-design-ppt-2.2.0.zip`. Its root contains SKILL.md, references, assets, scripts and dependency manifests. WorkBuddy: Experts / Skills / Connectors → Skills → Add Skill → Upload Skill. For other hosts use their supported custom-skill import or extract into their documented skill folder. A pasted URL is not a universal installation mechanism.
+Download `public/downloads/leego-design-ppt-2.2.1.zip`. Its root contains SKILL.md, references, assets, scripts and dependency manifests. WorkBuddy: Experts / Skills / Connectors → Skills → Add Skill → Upload Skill. For other hosts use their supported custom-skill import or extract into their documented skill folder. A pasted URL is not a universal installation mechanism.
 
 Read [host installation and fallbacks](skill/leego-design-ppt/references/compatibility.md) and [test coverage](COMPATIBILITY-REPORT.md). 豆包工作 native import is not assumed tested. The instruction-only fallback can use a host’s presentation tools when it cannot execute scripts.
 

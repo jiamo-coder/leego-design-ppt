@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
+import BrandMark from "./BrandMark";
 import DesignDecisions from "./DesignDecisions";
 import VersionStatus from "./VersionStatus";
 import { siteCopy, type Locale } from "./siteCopy";
@@ -46,7 +47,7 @@ export default function Home() {
     <main>
       <nav className="site-nav" aria-label={copy.a11y.primaryNavigation}>
         <a className="brand" href="#top" aria-label={copy.a11y.home}>
-          <span className="brand-mark">L</span><span>Leego Design PPT</span>
+          <BrandMark /><span>Leego Design PPT</span>
         </a>
         <div className="nav-links">
           <a href="#capabilities">{copy.nav.capabilities}</a><a href="#layouts">{copy.nav.layouts}</a><a href="#quality">{copy.nav.quality}</a>
@@ -73,7 +74,7 @@ export default function Home() {
         <a className="deck-stage" href="/demo/index.html" aria-label={copy.a11y.openDemo}>
           <div className="stage-toolbar"><span>{copy.stage.live}</span><span>{copy.stage.responsive}</span></div>
           <div className="slide-canvas">
-            <div className="slide-index">LEEGO / 2.2.0</div>
+            <div className="slide-index">LEEGO / 2.2.1</div>
             <div className="slide-copy"><p>{copy.stage.eyebrow}</p><h2><Lines>{copy.stage.title}</Lines></h2></div>
             <div className="slide-axis" aria-hidden="true"><span>{copy.stage.context}</span><i /><span>{copy.stage.evidence}</span><i /><span>{copy.stage.decision}</span></div>
           </div>
@@ -166,14 +167,14 @@ export default function Home() {
         <VersionStatus labels={copy.version} />
         <div className="download-copy"><h2><Lines>{copy.release.title}</Lines></h2><p>{copy.release.body}</p></div>
         <div className="downloads">
-          <a className="primary-action" href="/downloads/leego-design-ppt-2.2.0.zip" download>{copy.release.downloadSkill}</a>
+          <a className="primary-action" href="/downloads/leego-design-ppt-2.2.1.zip" download>{copy.release.downloadSkill}</a>
           <a href="/downloads/leego-design-ppt-demo.pptx" download>{copy.release.examplePptx}</a>
           <a href="/downloads/leego-design-ppt-demo.pdf" download>{copy.release.examplePdf}</a>
           <a href="https://github.com/jiamo-coder/leego-design-ppt">{copy.release.github}</a>
         </div>
       </section>
 
-      <footer><a className="brand" href="#top"><span className="brand-mark">L</span><span>Leego Design PPT</span></a><p>{copy.footer}</p></footer>
+      <footer><a className="brand" href="#top"><BrandMark /><span>Leego Design PPT</span></a><p>{copy.footer}</p></footer>
     </main>
   );
 }

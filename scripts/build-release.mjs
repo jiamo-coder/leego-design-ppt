@@ -21,7 +21,7 @@ const sha=async p=>crypto.createHash('sha256').update(await fs.readFile(path.joi
 await fs.writeFile(`${zipPath}.sha256`,`${await sha(relativeZip)}  ${path.basename(zipPath)}\n`);
 const base='https://raw.githubusercontent.com/jiamo-coder/leego-design-ppt/main/';
 const defs=[['skill-zip',relativeZip],['skill','skill/leego-design-ppt/SKILL.md'],['interaction-lessons','skill/leego-design-ppt/references/interaction-lessons.md'],['compatibility','skill/leego-design-ppt/references/compatibility.md'],['ui-to-presentation','skill/leego-design-ppt/references/ui-to-presentation.md'],['design-tokens','skill/leego-design-ppt/assets/design-tokens.json'],['theme-presets','skill/leego-design-ppt/assets/theme-presets.json'],['layout-patterns','skill/leego-design-ppt/assets/layout-patterns.json'],['deck-spec-schema','skill/leego-design-ppt/assets/deck-spec.schema.json'],['demo-pptx','public/downloads/leego-design-ppt-demo.pptx'],['demo-pdf','public/downloads/leego-design-ppt-demo.pdf']];
-for(const name of ['design-decision','reference-learning','design-evaluation','live-updates']) defs.push([name,`skill/leego-design-ppt/references/${name}.md`]);
+for(const name of ['brand-identity','design-decision','reference-learning','design-evaluation','live-updates']) defs.push([name,`skill/leego-design-ppt/references/${name}.md`]);
 const resources=[];for(const [id,p]of defs)resources.push({id,url:base+p,sha256:await sha(p)});
 const standards=path.join(root,'public/standards/leego-design-ppt');await fs.mkdir(standards,{recursive:true});
 for(const [,p]of defs.filter(([,p])=>p.startsWith('skill/')))await fs.copyFile(path.join(root,p),path.join(standards,path.basename(p)));

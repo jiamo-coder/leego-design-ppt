@@ -5,7 +5,7 @@ description: Create, redesign, or audit presentations using Leego Design PPT nar
 
 # Leego Design PPT
 
-Create decision-ready presentations with one narrative, one visual system, and the requested outputs. The public name is always **Leego Design PPT**. Version **2.2.0** · 2026-10-25. The package uses standard Agent Skills files, Node.js 20+ and public dependencies; it does not require Codex, a paid API or an account token.
+Create decision-ready presentations with one narrative, one visual system, and the requested outputs. The public name is always **Leego Design PPT**. Version **2.2.1** · 2026-10-25. The package uses standard Agent Skills files, Node.js 20+ and public dependencies; it does not require Codex, a paid API or an account token.
 
 ## Core promise
 
@@ -24,6 +24,7 @@ Choose requested formats first. A request for only PPTX, HTML, a critique, or a 
 - Always start from the user’s requested deliverable and already approved direction. Read [interaction-lessons.md](references/interaction-lessons.md) for accumulated decisions.
 - New deck or content restructure: [narrative-and-content.md](references/narrative-and-content.md) and [typography-and-layout.md](references/typography-and-layout.md).
 - UI/product material, metrics or family visuals: [UI-to-presentation.md](references/ui-to-presentation.md). This is a selective translation of the UI system, not an instruction to load or install another Skill.
+- Skill logo or Leego family identity: [brand-identity.md](references/brand-identity.md); resolve `skill.leego-ppt`, never substitute the UI member.
 - Brand/image inputs: [assets-and-brand-replacement.md](references/assets-and-brand-replacement.md).
 - First use on any host, installation or missing runtime: [compatibility.md](references/compatibility.md), then `node scripts/doctor.mjs` from the skill directory.
 - HTML: [responsive-web.md](references/responsive-web.md). PPTX/PDF: [pptx-and-pdf.md](references/pptx-and-pdf.md).

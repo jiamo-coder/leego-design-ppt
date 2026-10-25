@@ -9,7 +9,7 @@ type Manifest = {
 };
 
 const FALLBACK: Manifest = {
-  version: "2.2.0",
+  version: "2.2.1",
   updatedAt: "2026-10-25",
   summary: ["Bundled release snapshot"],
 };
